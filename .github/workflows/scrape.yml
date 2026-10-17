@@ -2,8 +2,8 @@ name: Hydrology Data Sync Cron
 
 on:
   schedule:
-    - cron: '0 * * * *' # Fires automatically every hour, 24/7
-  workflow_dispatch: # Gives you a manual button to test it instantly
+    - cron: '0 * * * *' # Automatically runs every single hour, 24/7
+  workflow_dispatch: # Allows manual trigger testing
 
 jobs:
   scrape:
@@ -20,10 +20,6 @@ jobs:
     - name: Install System Dependencies
       run: |
         pip install -r requirements.txt
-
-    - name: Install Browser Drivers
-      run: |
-        playwright install chromium --with-deps
 
     - name: Execute Scraper Engine
       env:
